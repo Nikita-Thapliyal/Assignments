@@ -66,11 +66,16 @@ Base 5   Base 10
  1000    5**3 = 125
 10000    5**4 = 625
 
-Strategy to convert a number in base 5 to base 10.
+Strategy to convert a number in base 5 to base 10. 
+let x be a three digit base 5 number and y be the corresponding base 10 number, then-
+if a = x//100, 
 
+y = 5*5*a + 5*((x-a)//10) + xmod10
 
 Strategy to convert a number in base N to base M.
-
+let x be a three digit base N number and y be the corresponding base M number, then-
+if a = x//M*2, 
+y = N*N*a + N*((x-a)//M) + xmodM
 
 In base B, how many numbers can one represent in n digits?
 B**n
