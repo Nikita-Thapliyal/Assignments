@@ -1,24 +1,24 @@
-def equation_solve(eq1, eq2, eq3):
+def solve_equations(eqns):
     #elimination method
     
     #removing the 'x' variable
     #multiplying the coefficient of 'x' from eq1, to the eq2 and the coefficient of 'x' from eq2, to the eq1
     eq1_x = []
-    for i in range(len(eq1)):
-        reqd = eq1[0]*eq2[i] - eq2[0]*eq1[i]
+    for i in range(len(eqns[0])):
+        reqd = eqns[0][0]*eqns[1][i] - eqns[1][0]*eqns[0][i]
         eq1_x.append(reqd)
     del eq1_x[0]
     
     #multiplying the coefficient of 'x' from eq3, to the eq2 and the coefficient of 'x' from eq2, to the eq3
     eq2_x = []
-    for j in range(len(eq2)):
-        reqd1 = eq2[0]*eq3[j] - eq3[0]*eq2[j]
+    for j in range(len(eqns[1])):
+        reqd1 = eqns[1][0]*eqns[2][j] - eqns[2][0]*eqns[1][j]
         eq2_x.append(reqd1)
     del eq2_x[0]
     print("After the elimination of 'x': ", [eq1_x, eq2_x])
     
     #removing the 'y' variable
-    ##multiplying the coefficient of 'y' from eq1_x, to the eq2_x and the coefficient of 'y' from eq2_x, to the eq1_x
+    #multiplying the coefficient of 'y' from eq1_x, to the eq2_x and the coefficient of 'y' from eq2_x, to the eq1_x
     z_eq = []
     for i in range(len(eq1_x)):
         yz_eq = eq1_x[0]*eq2_x[i] - eq2_x[0]*eq1_x[i]
@@ -32,9 +32,11 @@ def equation_solve(eq1, eq2, eq3):
     b = (eq1_x[-1] - c*eq1_x[-2])/eq1_x[0]
     print("Value of b is: ", b)
     
-    a = (eq1[-1] - c*eq1[-2] - b*eq1[-3])/eq1[0]
+    a = (eqns[0][-1] - c*eqns[0][-2] - b*eqns[0][-3])/eqns[0][0]
     print("Value of a is: ", a)
     
     return [a,b,c]
+
 #test equations
-equation_solve([1,1,1,10],[2,3,4,50],[3,5,-8,100])
+eqns = [[1,1,1,10],[2,3,4,50],[3,5,-8,100]]
+solve_equations(eqns)
