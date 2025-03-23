@@ -1,0 +1,26 @@
+def matrix_multiplication(mat1, mat2):
+    mat1row = len(mat1)
+    mat1col = len(mat1[0])
+    mat2row = len(mat2)
+    mat2col = len(mat2[0])
+    if mat1col != mat2row:
+        return ("Matrix Multiplication is not possible")
+    result = []
+    for i in range(0, mat1row):
+        m = []
+        for j in range(0, mat2col):
+            final = 0
+            for k in range(0, mat1col):
+                a = mat1[i][k]
+                b = mat2[k][j]
+                final += a*b
+                #print(final)
+            m.append(final)
+            #print(m)
+        result.append(m)
+    return result
+
+#test code 
+mat1 = [[1,2,3], [4,5,6], [7,8,9]]
+mat2 = [[9,8,7], [6,5,4], [3,2,1]]
+matrix_multiplication(mat1, mat2)
