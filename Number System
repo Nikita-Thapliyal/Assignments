@@ -58,7 +58,7 @@ Multiplication
 
 Numbers in Base 10, corresponding to the numbers in base 5:
 Base 5   Base 10
-  10     5*1 = 5
+  10     5*1 = 5**1 = 5
   20     5*2 = 10
   30     5*3 = 15
   40     5*4 = 20
@@ -66,17 +66,54 @@ Base 5   Base 10
  1000    5**3 = 125
 10000    5**4 = 625
 
-Strategy to convert a number in base 5 to base 10. 
-let x be a three digit base 5 number and y be the corresponding base 10 number, then-
-if a = x//100, 
+#Code to convert a base 5 number to base 10:
+def base5to10(num,digits):
+    result = 0
+    for i in range(0,digits+1):
+        d = num%10
+        num = num//10
+        result += d*(5**i)
+        i += 1
+    return result
 
-y = 5*5*a + 5*((x-a)//10) + xmod10
+#Code to convert a base 10 number to base 5:
+def base10to5(num,digits):
+    result = 0
+    for i in range(0,digits+1):
+        d = num%5
+        num = num//5
+        result += d*(10**i)
+        i += 1
+    return result
 
-Strategy to convert a number in base N to base M.
-let x be a three digit base N number and y be the corresponding base M number, then-
-if a = x//M*2, 
-y = N*N*a + N*((x-a)//M) + xmodM
+#Code to convert a base M number to base N:
+def baseMtoN(M, N, num, digits):
+    result = 0
+    for i in range(0,digits+1):
+        d = num%N
+        num = num//N
+        result += d*(M**i)
+        i += 1
+    return result
 
-In base B, how many numbers can one represent in n digits?
-B**n
+
+Q. In base B, how many numbers can one represent in n digits?
+A. B**n
 For example: In base 5, one can represent 5**4 numbers in 4 digits.
+
+Q: In base 7, how many numbers can you represent in 5 digits?
+A:7**5
+
+Q: To represent all numbers upto to but not including 10000 in base10, how many digits do you need?
+A. log(10000) base 10 = 4
+
+Q: To represent all numbers up to 9999 in base10, how many digits do you need?
+Note: we are representing total 10000 (0 to 9999) numbers
+A: 4
+
+Q: To represent N numbers, how many digits do we need in base 10?
+A: log(N) base 10
+
+Q: To represent N numbers, how many digits do we need in base B?
+A: log(N) base B
+
